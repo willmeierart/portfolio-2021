@@ -1,0 +1,38 @@
+{
+	"presets": [
+		"next/babel"
+	],
+	"plugins": [
+		[
+			"module-resolver",
+			{
+				"alias": {
+					"components": "./src/components",
+					"constants": "./src/constants",
+					"layout": "./src/layout",
+					"lib": "./src/lib",
+					"pages": "./src/pages",
+					"server": "./src/server",
+					"static": "./src/public/static"
+				}
+			}
+		],
+		[
+			"@babel/plugin-proposal-optional-chaining"
+		]
+	],
+	"env": {
+		"production": {
+			"plugins": [
+				[
+					"remove-test-ids",
+					{
+						"attributes": [
+							"data-testid"
+						]
+					}
+				]
+			]
+		}
+	}
+}
