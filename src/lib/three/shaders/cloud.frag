@@ -19,8 +19,8 @@ varying vec2 vUv;
 void main() {
 	vec2 newUv = vUv;
 
-	vec4 txtNoise1 = texture2D(uTxtCloudNoise, vec2(vUv.x + uTime * 0.0001, vUv.y - uTime * 0.0014)); // these multipliers affect speed
-	vec4 txtNoise2 = texture2D(uTxtCloudNoise, vec2(vUv.x - uTime * 0.00002, vUv.y + uTime * 0.00017 + 0.2)); // these multipliers affect speed
+	vec4 txtNoise1 = texture2D(uTxtCloudNoise, vec2(vUv.x + uTime * 0.0001, vUv.y - uTime * 0.0014 * uSpeed)); // these multipliers affect speed
+	vec4 txtNoise2 = texture2D(uTxtCloudNoise, vec2(vUv.x - uTime * 0.00002, vUv.y + uTime * 0.00017 * uSpeed + 0.2)); // these multipliers affect speed
 
 	float noiseBig = fm3d(vec3(vUv * uFac1, uTime * uTimeFactor1), 4) + 1.0 * 0.5;
 	newUv += noiseBig * uDisplStrength1;

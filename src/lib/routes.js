@@ -2,7 +2,12 @@ const routes = {
 	HOME: {
 		path: '/',
 		page: 'index',
-		title: 'home'
+		title: 'Home'
+	},
+	TECH: {
+		path: '/tech',
+		page: 'tech',
+		title: 'Tech Projects'
 	},
 }
 
