@@ -1,10 +1,13 @@
 import '@babel/polyfill'
 import App from 'next/app'
 import Head from 'next/head'
-import withData from 'lib/apollo/client'
 import { ApolloProvider } from '@apollo/react-hooks';
 import { PageTransition } from 'next-page-transitions'
+import { ThemeProvider } from 'emotion-theming'
+import withData from 'lib/apollo/client'
 import Layout from 'layout/Layout'
+import * as theme from 'styles/theme.style'
+import GlobalStyles from 'styles/global.style'
 
 class Application extends App {
 	static async getInitialProps ({ Component, ctx }) {
@@ -44,53 +47,15 @@ class Application extends App {
 						timeout={300}
 						classNames="page-transition"
 					>
-						<Component
-							{...pageProps}
-							key={router.route + (router.query.page || '')}
-							router={router}
-						/>
+						<ThemeProvider theme={theme}>
+							<GlobalStyles />
+							<Component
+								{...pageProps}
+								key={router.route + (router.query.page || '')}
+								router={router}
+							/>
+						</ThemeProvider>
 					</PageTransition>
-					<style jsx global>{`
-						html {
-							--color-sky: #2c6bd1;
-							--color-red: #e32b3e;
-							--color-yellow: #fff70d;
-						}
-						body {
-							background: var(--color-sky);
-							box-sizing: border-box;
-							font-size: 11px;
-							height: 100vh;
-							letter-spacing: 1px;
-							margin: 0;
-							padding: 0;
-							width: 100vw;
-						}
-						h1 {
-							color: var(--color-red);
-						}
-						a {
-							color: inherit;
-							text-decoration: none;
-						}
-						li {
-							list-style: none;
-						}
-						.page-transition-enter {
-							opacity: 0;
-						}
-						.page-transition-enter-active {
-							opacity: 1;
-							transition: opacity 300ms;
-						}
-						.page-transition-exit {
-							opacity: 1;
-						}
-						.page-transition-exit-active {
-							opacity: 0;
-							transition: opacity 300ms;
-						}
-					`}</style>
 				</Layout>
 			</ApolloProvider>
 		)

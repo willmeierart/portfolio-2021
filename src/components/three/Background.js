@@ -3,9 +3,8 @@ import { BackSide, Color } from 'three'
 import vertexShader from 'lib/three/shaders/default.vert'
 import fragmentShader from 'lib/three/shaders/environment.frag'
 
-export default () => {
+export default ({ radius = 8 }) => {
 	const mesh = useRef(null)
-	const radius = 8
 	const colorSteps = {
 		gradients: [
 			{
@@ -34,7 +33,7 @@ export default () => {
 			>
 				<sphereBufferGeometry
 					attach="geometry"
-					args={[radius, 30, 30]}
+					args={[radius, 100, 100]}
 				/>
 				<shaderMaterial
 					args={[{ uniforms, vertexShader, fragmentShader }]}

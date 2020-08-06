@@ -11,7 +11,7 @@ export default ({
 	color = '#000000',
 	...extra
 }) => {
-	const font = useLoader(THREE.FontLoader, '/static/fonts/cholo_script.json')
+	const font = useLoader(THREE.FontLoader, '/static/fonts/infinite_stroke.json')
 
 	const config = useMemo(() => ({
 		font,

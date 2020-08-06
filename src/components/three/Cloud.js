@@ -5,17 +5,17 @@ import useTexture from 'lib/hooks/useTexture'
 import fragmentShader from 'lib/three/shaders/cloud.frag'
 import vertexShader from 'lib/three/shaders/cloud.vert'
 
-export default ({ size }) => {
+export default ({ scale, speed = 1 }) => {
 	const group = useRef(null)
 	const mesh = useRef(null)
-	const [width, height] = size
+	const [width, height] = [10.048, 10.348].map(s => s * scale)
 	const src1 = require('../../../public/static/images/clouds/1.jpg')
 	const src2 = require('../../../public/static/images/clouds/2.jpg')
 	const t1 = useTexture(src1)
 	const t2 = useTexture(src2)
 
 	const myUniforms = useMemo(() => ({
-		uSpeed: { value: 3 },
+		uSpeed: { value: speed },
 		uTime: { value: 0 },
 		uTxtShape: { value: t1 },
 		uTxtCloudNoise: { value: t2 },
@@ -52,7 +52,7 @@ export default ({ size }) => {
 		<group ref={group}>
 			<mesh
 				ref={mesh}
-				position={[0, 0.03, 0]}
+				position={[0, 0, 0]}
 				scale={[width, height, 1]}
 			>
 				<planeBufferGeometry
