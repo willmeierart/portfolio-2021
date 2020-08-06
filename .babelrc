@@ -1,6 +1,7 @@
 {
 	"presets": [
-		"next/babel"
+		"next/babel",
+		"@emotion/babel-preset-css-prop"
 	],
 	"plugins": [
 		[
@@ -13,13 +14,19 @@
 					"lib": "./src/lib",
 					"pages": "./src/pages",
 					"server": "./src/server",
-					"static": "./src/public/static"
+					"static": "./src/public/static",
+					"styles": "./src/styles"
 				}
 			}
 		],
 		[
-			"@babel/plugin-proposal-optional-chaining"
-		]
+			"emotion",
+			{
+				"sourceMap": true,
+				"cssPropOptimization": true
+			}
+		],
+		["@babel/plugin-proposal-optional-chaining"]
 	],
 	"env": {
 		"production": {
