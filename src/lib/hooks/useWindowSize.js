@@ -1,21 +1,28 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
+import debounce from 'lodash.debounce'
 
 export default function useWindowSize () {
 	const isClient = typeof window !== 'undefined'
 
 	const getSize = () => {
 		return {
-			width: isClient ? window.innerWidth : undefined,
-			height: isClient ? window.innerHeight : undefined
+			width: isClient ? window.innerWidth : 0,
+			height: isClient ? window.innerHeight : 0,
 		}
 	}
 
 	const [windowSize, setWindowSize] = useState(getSize)
 
+	const handleResize = () => setWindowSize(getSize())
+	const debouncedResize = useCallback(debounce(handleResize, 200))
+
 	useEffect(() => {
-		const handleResize = () => setWindowSize(getSize())
-		window.addEventListener('resize', handleResize)
-		return () => window.removeEventListener('resize', handleResize)
+		debouncedResize()
+		if (!isClient) return false
+
+		window.addEventListener('resize', debouncedResize)
+
+		return () => window.removeEventListener('resize', debouncedResize)
 	}, [])
 
 	return windowSize
