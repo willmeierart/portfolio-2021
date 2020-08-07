@@ -16,11 +16,10 @@ export default () => {
 		<orbitControls
 			ref={ref}
 			args={[camera, gl.domElement]}
-			enableZoom={false}
 			enableDamping
-			enablePan={false}
-			enableRotate={false}
-			enableZoom={false}
+			enablePan
+			enableRotate
+			enableZoom
 			center={[0, 0, 0]}
 			dampingFactor={0.1}
 			rotateSpeed={0.1}
