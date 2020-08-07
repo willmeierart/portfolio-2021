@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useMemo, useRef } from 'react'
 import { useFrame } from 'react-three-fiber'
 import { Clock } from 'three'
 import useTexture from 'lib/hooks/useTexture'
@@ -12,7 +12,7 @@ export default function Plane ({ imgSrc = '' }) {
 	const plane = useRef()
 	const texture = useTexture(imgSrc)
 
-	const clock = new Clock()
+	const clock = useMemo(() => new Clock(), [])
 
 	useFrame(() => {
 		const t = clock.getElapsedTime()
@@ -37,7 +37,7 @@ export default function Plane ({ imgSrc = '' }) {
 		>
 			<planeGeometry
 				attach="geometry"
-				args={[size, size, 60, 60]}
+				args={[size, size, verticeNum, verticeNum]}
 			/>
 			<meshBasicMaterial
 				attach="material"
