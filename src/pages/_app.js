@@ -1,5 +1,4 @@
 import '@babel/polyfill'
-import { useEffect, useState } from 'react'
 import App from 'next/app'
 import Head from 'next/head'
 import { ApolloProvider } from '@apollo/react-hooks';
@@ -11,12 +10,20 @@ import * as theme from 'styles/theme.style'
 import GlobalStyles from 'styles/global.style'
 
 class Application extends App {
-	static async getInitialProps ({ Component, ctx }) {
-		const pageProps = Component.getInitialProps
-			? await Component.getInitialProps({ ...ctx })
-			: {}
+	// static async getInitialProps ({ Component, ctx }) {
+	// 	const pageProps = Component.getInitialProps
+	// 		? await Component.getInitialProps({ ...ctx })
+	// 		: {}
 
-		return { pageProps }
+	// 	return { pageProps }
+	// }
+
+	componentDidMount () {
+		window.dataLayer = window.dataLayer || []
+		function gtag () {
+			window.dataLayer.push(arguments)
+		}
+		gtag('config', 'G-GZ7H5KZ3H0')
 	}
 
 	render () {
@@ -33,17 +40,12 @@ class Application extends App {
 			<ApolloProvider client={apollo}>
 				<Layout router={router}>
 					<Head>
+						<script async src="https://www.googletagmanager.com/gtag/js?id=G-GZ7H5KZ3H0" />
 						<meta property="og:type" content="website" />
 						<meta property="og:site_name" content="will meier" />
 						<meta property="og:locale" content="en_US" />
 						<meta name="twitter:card" content="summary" />
-						<meta name="theme-color" content="#676767" />
-						<link rel="apple-touch-icon" sizes="180x180" href="/static/apple-touch-icon.png" />
-						<link rel="icon" type="image/png" sizes="32x32" href="/static/favicon-32x32.png" />
-						<link rel="icon" type="image/png" sizes="16x16" href="/static/favicon-16x16.png" />
-						<link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon" />
 						<link rel="icon" href="/static/favicon.ico" type="image/x-icon" />
-						<link rel="manifest" href="/static/site.webmanifest" />
 						<title>Will Meier</title>
 					</Head>
 					<PageTransition
