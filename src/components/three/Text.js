@@ -4,22 +4,23 @@ import { useLoader, useUpdate } from 'react-three-fiber'
 
 export default ({
 	children,
-	content,
-	vAlign = 'center',
-	hAlign = 'center',
-	fontSize = 1,
 	color = '#000000',
+	content,
+	fontSize = 1,
+	hAlign = 'center',
+	vAlign = 'center',
+	viewport = {},
 	...extra
 }) => {
 	const font = useLoader(THREE.FontLoader, '/static/fonts/infinite_stroke.json')
 
 	const config = useMemo(() => ({
 		font,
-		size: 12,
+		size: viewport.width / 70,
 		height: 0,
 		curveSegments: 15,
 		material: 0,
-	}), [])
+	}), [viewport])
 
 	const mesh = useUpdate(self => {
 		const size = new THREE.Vector3()
@@ -27,7 +28,7 @@ export default ({
 		self.geometry.boundingBox.getSize(size)
 		self.position.x = hAlign === 'center' ? -size.x / 2 : hAlign === 'right' ? 0 : -size.x
 		self.position.y = vAlign === 'center' ? -size.y / 2 : vAlign === 'top' ? 0 : -size.y
-	}, [])
+	}, [content, viewport])
 
 	return (
 		<group

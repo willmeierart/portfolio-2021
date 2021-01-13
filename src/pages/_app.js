@@ -1,4 +1,5 @@
 import '@babel/polyfill'
+import { useEffect, useState } from 'react'
 import App from 'next/app'
 import Head from 'next/head'
 import { ApolloProvider } from '@apollo/react-hooks';
@@ -18,6 +19,24 @@ class Application extends App {
 		return { pageProps }
 	}
 
+	state = {
+		isFocused: true
+	}
+
+	// componentDidMount () {
+	// 	setInterval(() => {
+	// 		((doc) => {
+	// 			this.setState({ isFocused: !doc.hidden })
+	// 		})(document)
+	// 	}, 1000)
+	// }
+
+	// componentDidUpdate (prevProps, prevState) {
+	// 	if (prevState.isFocused !== this.state.isFocused) {
+	// 		console.log(this.state.isFocused, 'focused')
+	// 	}
+	// }
+
 	render () {
 		const {
 			apollo,
@@ -26,12 +45,14 @@ class Application extends App {
 			router,
 		} = this.props
 
+		console.log('Made with 💖 with next.js and react-three-fiber by Will Meier 2021')
+
 		return (
 			<ApolloProvider client={apollo}>
 				<Layout router={router}>
 					<Head>
 						<meta property="og:type" content="website" />
-						<meta property="og:site_name" content="canopy" />
+						<meta property="og:site_name" content="will meier" />
 						<meta property="og:locale" content="en_US" />
 						<meta name="twitter:card" content="summary" />
 						<meta name="theme-color" content="#676767" />
@@ -41,6 +62,7 @@ class Application extends App {
 						<link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon" />
 						<link rel="icon" href="/static/favicon.ico" type="image/x-icon" />
 						<link rel="manifest" href="/static/site.webmanifest" />
+						<title>Will Meier</title>
 					</Head>
 					<PageTransition
 						skipInititalTransition

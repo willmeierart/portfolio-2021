@@ -7,7 +7,7 @@ const Layout = ({ children, router }) => {
 
 	return (
 		<main css={style.main}>
-			<Nav router={router} />
+			{/* <Nav router={router} /> */}
 			{children}
 			{/* <div css={style.cursor} style={{ top: `${posY - 6}px`, left: `${posX - 6}px` }} /> */}
 		</main>

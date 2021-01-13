@@ -2,7 +2,7 @@ import Head from 'next/head'
 
 export const defaultDescription = '';
 export const defaultImage = '/static/images/logo.png';
-export const defaultTitle = '';
+export const defaultTitle = 'Will Meier';
 
 const PageHead = ({ metadata }) => {
 	const description = metadata?.metaDescription || defaultDescription

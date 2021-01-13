@@ -2,7 +2,7 @@ import { css } from '@emotion/core'
 
 export default circleStyles => css`
 .circle {
-		background: yellow;
+		background: #fff600;
 		border-radius: ${circleStyles.circumference};
 		cursor: pointer;
 		display: inline-block;
