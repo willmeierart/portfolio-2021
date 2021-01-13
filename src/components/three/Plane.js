@@ -11,6 +11,7 @@ export default function Plane ({
 	idx,
 	imgSrc = '',
 	numItems,
+	reflectivity,
 	setXPositions,
 	viewport = {},
 	xPositions,
@@ -42,10 +43,10 @@ export default function Plane ({
 
 		return {
 			initialPosX,
-			initialPosY: -5,
+			initialPosY: -4,
 			initialPosZ: -2,
-			riseSpeed: 0.02,
-			size: viewport.width / 1000,
+			riseSpeed: viewport.height / 1600 * 0.02,
+			size: Math.min(viewport.width / 1000, 1),
 			verticeNum: 60,
 			waveAmt: 0.5,
 			waveNum: 3,
@@ -64,7 +65,7 @@ export default function Plane ({
 		waveNum,
 	} = config
 
-	const staggeredInitialY = (idx * 1.5 + 1) * initialPosY
+	const staggeredInitialY = (idx * 1.5 + 2) * initialPosY
 
 	useFrame(state => {
 		const t = clock.getElapsedTime()
@@ -115,6 +116,7 @@ export default function Plane ({
 				attach="material"
 				combine={MixOperation}
 				map={texture}
+				reflectivity={reflectivity}
 				transparent
 			/>
 		</mesh>

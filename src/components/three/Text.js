@@ -16,7 +16,7 @@ export default ({
 
 	const config = useMemo(() => ({
 		font,
-		size: viewport.width / 70,
+		size: Math.min(viewport.width / 100, 12),
 		height: 0,
 		curveSegments: 15,
 		material: 0,

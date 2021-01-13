@@ -19,24 +19,6 @@ class Application extends App {
 		return { pageProps }
 	}
 
-	state = {
-		isFocused: true
-	}
-
-	// componentDidMount () {
-	// 	setInterval(() => {
-	// 		((doc) => {
-	// 			this.setState({ isFocused: !doc.hidden })
-	// 		})(document)
-	// 	}, 1000)
-	// }
-
-	// componentDidUpdate (prevProps, prevState) {
-	// 	if (prevState.isFocused !== this.state.isFocused) {
-	// 		console.log(this.state.isFocused, 'focused')
-	// 	}
-	// }
-
 	render () {
 		const {
 			apollo,
@@ -45,7 +27,7 @@ class Application extends App {
 			router,
 		} = this.props
 
-		console.log('Made with 💖 with next.js and react-three-fiber by Will Meier 2021')
+		console.log('Made with 💖 with next.js and react-three-fiber by Will Meier 2021 (still under construction)')
 
 		return (
 			<ApolloProvider client={apollo}>

@@ -1,4 +1,3 @@
-import { useMemo, useRef } from 'react'
 import SimplexNoise from 'simplex-noise'
 import { Clock, Vector3 } from 'three'
 import { arrayLen, dimUnits } from 'lib/helpers'
@@ -24,7 +23,6 @@ export default function wind () {
 				const appliedForce = (appliedNoise * 0.5 + 0.5) * force
 
 				flowField.current[i] = direction.clone().multiplyScalar(appliedForce)
-				console.log(flowField)
 			})
 		}
 	}
