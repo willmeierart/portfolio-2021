@@ -3,7 +3,7 @@ import useWindowSize from 'lib/hooks/useWindowSize'
 import style from './Nav.style'
 // import Link from 'next/link'
 // import { routes } from 'lib/routes'
-import { useGesture } from 'react-use-gesture'
+// import { useGesture } from 'react-use-gesture'
 
 const Nav = () => {
 	// const { HOME } = routes
