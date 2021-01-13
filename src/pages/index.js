@@ -1,5 +1,4 @@
-import { Suspense, useEffect, useRef, useState } from 'react'
-import PageHead from 'layout/PageHead'
+import { Suspense, useEffect, useState } from 'react'
 import Background from 'components/three/Background'
 import Canvas from 'components/three/Canvas'
 import Cloud from 'components/three/Cloud'
@@ -9,23 +8,18 @@ import useMouseMove from 'lib/hooks/useMouseMove'
 import useWindowSize from 'lib/hooks/useWindowSize'
 
 export default function Home () {
-	// is there a better way to handle these? have access in the useFrame callback and as handlers on mesh obj...
 	const mouseData = useMouseMove()
 	const windowSize = useWindowSize()
 	const [mouseFromCenter, setMouseFromCenter] = useState({ x: 0, y: 0 })
 	const [xPositions, setXPositions] = useState({})
-	// const mouseFromCenter = useRef({ x: 0, y: 0 })
 
-	useEffect(() => { // maybe refactor this into its own hook
+	useEffect(() => {
 		const { posX, posY } = mouseData
 		const screenCenter = {
 			x: windowSize.width / 2,
 			y: windowSize.height / 2,
 		}
-		// mouseFromCenter.current = {
-		// 	x: posX - screenCenter.x,
-		// 	y: posY - screenCenter.y,
-		// }
+
 		setMouseFromCenter({
 			x: posX - screenCenter.x,
 			y: posY - screenCenter.y,
@@ -57,9 +51,8 @@ export default function Home () {
 
 	return (
 		<section>
-			<PageHead />
+			{/* <PageHead /> */}
 			<Canvas>
-				{/* <Camera /> */}
 				<Background
 					radius={8}
 				/>
