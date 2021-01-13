@@ -1,5 +1,5 @@
 import { useMemo } from 'react'
-import * as THREE from 'three'
+import { FontLoader, Vector3 } from 'three'
 import { useLoader, useUpdate } from 'react-three-fiber'
 
 export default ({
@@ -12,7 +12,7 @@ export default ({
 	viewport = {},
 	...extra
 }) => {
-	const font = useLoader(THREE.FontLoader, '/static/fonts/infinite_stroke.json')
+	const font = useLoader(FontLoader, '/static/fonts/infinite_stroke.json')
 
 	const config = useMemo(() => ({
 		font,
@@ -23,7 +23,7 @@ export default ({
 	}), [viewport])
 
 	const mesh = useUpdate(self => {
-		const size = new THREE.Vector3()
+		const size = new Vector3()
 		self.geometry.computeBoundingBox()
 		self.geometry.boundingBox.getSize(size)
 		self.position.x = hAlign === 'center' ? -size.x / 2 : hAlign === 'right' ? 0 : -size.x

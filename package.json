@@ -32,7 +32,6 @@
     "simplex-noise": "^2.4.0",
     "three": "^0.118.3",
     "three-loaders": "^1.0.9",
-    "three-orbitcontrols": "^2.110.3",
     "use-cannon": "^0.5.0"
   },
   "scripts": {

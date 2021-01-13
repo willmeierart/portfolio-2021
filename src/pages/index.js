@@ -1,7 +1,7 @@
 import { Suspense, useEffect, useRef, useState } from 'react'
 import PageHead from 'layout/PageHead'
 import Background from 'components/three/Background'
-import Camera from 'components/three/Camera'
+// import Camera from 'components/three/Camera'
 import Canvas from 'components/three/Canvas'
 import Cloud from 'components/three/Cloud'
 import Text from 'components/three/Text'
