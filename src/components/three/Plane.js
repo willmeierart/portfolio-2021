@@ -1,4 +1,4 @@
-import { useMemo, useRef, useState } from 'react'
+import { useCallback, useMemo, useRef, useState } from 'react'
 import { useFrame } from 'react-three-fiber'
 import { Clock, MixOperation } from 'three'
 import useTexture from 'lib/hooks/useTexture'
@@ -10,7 +10,6 @@ export default function Plane ({
 	externalUrl = '',
 	idx,
 	imgSrc = '',
-	numItems,
 	reflectivity,
 	setXPositions,
 	viewport = {},
@@ -102,8 +101,8 @@ export default function Plane ({
 		<mesh
 			castShadow
 			onClick={handleClick}
-			onPointerEnter={debounce(handlePointerEnter, 50)}
-			onPointerLeave={debounce(handlePointerLeave, 50)}
+			onPointerEnter={useCallback(debounce(handlePointerEnter, 50))}
+			onPointerLeave={useCallback(debounce(handlePointerLeave, 50))}
 			position={[initialPosX, staggeredInitialY, initialPosZ]}
 			receiveShadow
 			ref={plane}
