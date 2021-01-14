@@ -4,26 +4,45 @@ import Canvas from 'components/three/Canvas'
 import Cloud from 'components/three/Cloud'
 import Text from 'components/three/Text'
 import Plane from 'components/three/Plane'
+import useDeviceMotion from 'lib/hooks/useDeviceMotion'
 import useMouseMove from 'lib/hooks/useMouseMove'
 import useWindowSize from 'lib/hooks/useWindowSize'
 
 export default function Home () {
+	const isMobile = typeof window !== 'undefined' && typeof window.orientation !== 'undefined'
+
 	const mouseData = useMouseMove()
+	const deviceMotionData = useDeviceMotion()
 	const windowSize = useWindowSize()
-	const [mouseFromCenter, setMouseFromCenter] = useState({ x: 0, y: 0 })
-	const [xPositions, setXPositions] = useState({})
+	const [cameraOrigin, setCameraOrigin] = useState({ x: 0, y: 0 })
+	const [planeXPositions, setPlaneXPositions] = useState({})
+
+	console.log(typeof window)
 
 	useEffect(() => {
-		const { posX, posY } = mouseData
 		const screenCenter = {
 			x: windowSize.width / 2,
 			y: windowSize.height / 2,
 		}
 
-		setMouseFromCenter({
-			x: posX - screenCenter.x,
-			y: posY - screenCenter.y,
-		})
+		if (isMobile) {
+			console.log(deviceMotionData)
+			const { alpha, beta, gamma } = deviceMotionData.rotationRate
+
+			setCameraOrigin({
+				x: alpha - screenCenter.x,
+				y: beta - screenCenter.y,
+			})
+
+		} else {
+			console.log('should work')
+			const { posX, posY } = mouseData
+
+			setCameraOrigin({
+				x: posX - screenCenter.x,
+				y: posY - screenCenter.y,
+			})
+		}
 	}, [mouseData, windowSize])
 
 	const data = [
@@ -49,9 +68,10 @@ export default function Home () {
 		}
 	]
 
+	console.log(cameraOrigin)
+
 	return (
 		<section>
-			{/* <PageHead /> */}
 			<Canvas>
 				<Background
 					radius={8}
@@ -76,7 +96,7 @@ export default function Home () {
 							intensity={Math.abs(mouseData.deltaX + mouseData.deltaY) / 100 + 0.6}
 							lookAt={[0, -10, 0]}
 							penumbra={2}
-							position={[mouseFromCenter.x / 50, -mouseFromCenter.y / 50, 4]}
+							position={[cameraOrigin.x / 50, -cameraOrigin.y / 50, 4]}
 							width={3}
 						/>
 					</Text>
@@ -91,9 +111,9 @@ export default function Home () {
 								imgSrc={`/static/images/${icon.name}_y.png`}
 								numItems={data.length}
 								reflectivity={1}
-								setXPositions={setXPositions}
+								setXPositions={setPlaneXPositions}
 								viewport={windowSize}
-								xPositions={xPositions}
+								xPositions={planeXPositions}
 							/>
 						)
 					})}
