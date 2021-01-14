@@ -4,15 +4,15 @@ import Canvas from 'components/three/Canvas'
 import Cloud from 'components/three/Cloud'
 import Text from 'components/three/Text'
 import Plane from 'components/three/Plane'
-import useDeviceMotion from 'lib/hooks/useDeviceMotion'
+// import useDeviceMotion from 'lib/hooks/useDeviceMotion'
 import useMouseMove from 'lib/hooks/useMouseMove'
 import useWindowSize from 'lib/hooks/useWindowSize'
 
 export default function Home () {
-	const isMobile = typeof window !== 'undefined' && typeof window.orientation !== 'undefined'
+	// const isMobile = typeof window !== 'undefined' && typeof window.orientation !== 'undefined'
 
 	const mouseData = useMouseMove()
-	const deviceMotionData = useDeviceMotion()
+	// const deviceMotionData = useDeviceMotion()
 	const windowSize = useWindowSize()
 	const [cameraOrigin, setCameraOrigin] = useState({ x: 0, y: 0 })
 	const [planeXPositions, setPlaneXPositions] = useState({})
@@ -23,22 +23,22 @@ export default function Home () {
 			y: windowSize.height / 2,
 		}
 
-		if (isMobile) {
-			const { alpha, beta, gamma } = deviceMotionData.rotationRate
+		// if (isMobile) {
+		// 	const { alpha, beta, gamma } = deviceMotionData.rotationRate
 
-			setCameraOrigin({
-				x: alpha - screenCenter.x,
-				y: beta - screenCenter.y,
-			})
+		// 	setCameraOrigin({
+		// 		x: alpha - screenCenter.x,
+		// 		y: beta - screenCenter.y,
+		// 	})
 
-		} else {
-			const { posX, posY } = mouseData
+		// } else {
+		const { posX, posY } = mouseData
 
-			setCameraOrigin({
-				x: posX - screenCenter.x,
-				y: posY - screenCenter.y,
-			})
-		}
+		setCameraOrigin({
+			x: posX - screenCenter.x,
+			y: posY - screenCenter.y,
+		})
+		// }
 	}, [mouseData, windowSize])
 
 	const data = [
