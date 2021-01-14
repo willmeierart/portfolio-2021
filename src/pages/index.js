@@ -17,8 +17,6 @@ export default function Home () {
 	const [cameraOrigin, setCameraOrigin] = useState({ x: 0, y: 0 })
 	const [planeXPositions, setPlaneXPositions] = useState({})
 
-	console.log(typeof window)
-
 	useEffect(() => {
 		const screenCenter = {
 			x: windowSize.width / 2,
@@ -26,7 +24,6 @@ export default function Home () {
 		}
 
 		if (isMobile) {
-			console.log(deviceMotionData)
 			const { alpha, beta, gamma } = deviceMotionData.rotationRate
 
 			setCameraOrigin({
@@ -35,7 +32,6 @@ export default function Home () {
 			})
 
 		} else {
-			console.log('should work')
 			const { posX, posY } = mouseData
 
 			setCameraOrigin({
@@ -67,8 +63,6 @@ export default function Home () {
 			externalUrl: 'https://soundcloud.com/dj-fake-art'
 		}
 	]
-
-	console.log(cameraOrigin)
 
 	return (
 		<section>

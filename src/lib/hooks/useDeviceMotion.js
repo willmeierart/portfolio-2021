@@ -29,10 +29,6 @@ export default function useDeviceMotion () {
 			rotationRate,
 		} = e
 
-		console.log(typeof DeviceOrientationEvent['requestPermission'])
-
-		console.log(e)
-
 		setDeviceMotionData({
 			acceleration,
 			accelerationIncludingGravity,
