@@ -61,6 +61,10 @@ export default function Home () {
 		{
 			name: 'soundcloud',
 			externalUrl: 'https://soundcloud.com/dj-fake-art'
+		},
+		{
+			name: 'email',
+			externalUrl: 'mailto:willmeierart@gmail.com'
 		}
 	]
 
