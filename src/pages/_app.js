@@ -6,66 +6,34 @@ import Layout from 'layout/Layout'
 import * as theme from 'styles/theme.style'
 import GlobalStyles from 'styles/global.style'
 
-const words = [
-	'Hi!',
-	'My',
-	'name',
-	'is',
-	'Will',
-	'and',
-	'I',
-	'like',
-	'to',
-	'create',
-	'fun',
-	'experiences',
-	'of',
-	'various',
-	'kinds,',
-	'like',
-	'the',
-	'one',
-	'you\'re',
-	'having',
-	'now',
-	'(or',
-	'what',
-	'you',
-	'might',
-	'find',
-	'by',
-	'clicking',
-	'any',
-	'of',
-	'these',
-	'floaty',
-	'links)!',
-	':)',
-	'...',
-	'...',
-	'...',
-	'...',
-	'...',
-]
+const titlePhrase = 'Hi! My name is Will and I like to create fun experiences of various kinds, like the one you\'re having now :)'
 
 class Application extends App {
 	componentDidMount () {
-		let activeIndex = 0
-		setInterval(() => {
-			this.setState({ activeTitleWord: words[activeIndex] })
-			if (activeIndex === words.length - 1) {
-				activeIndex = 0
-			} else {
-				activeIndex += 1
-			}
-		}, 500)
+
+		this.scrollTitle()
 
 		console.log('%cMade with 💖 with next and three by Will Meier 2021', 'color: yellow; font-size: 20px')
 		console.log('...under construction')
 	}
 
 	state = {
-		activeTitleWord: words[0]
+		activeTitle: 'Hi!'
+	}
+
+	scrollTitle = () => {
+		const size = 30
+		let i = 0
+		setInterval(() => {
+			if (i > titlePhrase.length) {
+				this.setState({ activeTitle: titlePhrase })
+				i = 0
+			} else {
+				const activeTitle = titlePhrase.substring(i).substring(0, size)
+				this.setState({ activeTitle })
+			}
+			i++
+		}, 80)
 	}
 
 	render () {
@@ -96,7 +64,7 @@ class Application extends App {
 					<meta name="twitter:card" content="summary_large_image" />
 					<meta property="og:url" content="https://willmeier.cool" />
 					<link rel="icon" href="/static/favicon.ico" type="image/x-icon" />
-					<title>{this.state.activeTitleWord}</title>
+					<title>{this.state.activeTitle}</title>
 				</Head>
 				<ThemeProvider theme={theme}>
 					<GlobalStyles />
