@@ -26,7 +26,7 @@ class Application extends App {
 		let i = 0
 		setInterval(() => {
 			if (i > titlePhrase.length) {
-				this.setState({ activeTitle: titlePhrase })
+				this.setState({ activeTitle: titlePhrase.substring(0, size) })
 				i = 0
 			} else {
 				const activeTitle = titlePhrase.substring(i).substring(0, size)
@@ -53,6 +53,15 @@ class Application extends App {
 							function gtag(){dataLayer.push(arguments);}
 							gtag('js', new Date());
 							gtag('config', '[G-GZ7H5KZ3H0]');
+						`
+					}} />
+					<script dangerouslySetInnerHTML={{
+						__html: `
+						(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+						new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+						j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+						'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+						})(window,document,'script','dataLayer','GTM-5QD8BV4');
 						`
 					}} />
 					<meta property="og:type" content="website" />
