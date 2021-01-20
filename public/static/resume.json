@@ -1,0 +1,46 @@
+{
+	"name": "Will Meier",
+	"contact": [
+		"https://willmeier.cool/",
+		"https://github.com/willmeierart/",
+		"willmeierart@gmail.com"
+	],
+	"description": "extremely creative full-stack developer with a background in art/design/writing who specializes in frontend web apps",
+	"skills (desc)": {
+			"languages": ["es6", "scss", "node", "python", "graphql", "swift", "solidity", "sql", "php"],
+			"frameworks": ["react/next.js", "express", "mysql/postgres", "django", "flask"],
+			"libraries": ["redux/mobx", "apollo", "three.js", "emotion", "jest", "drf"],
+			"other": ["git", "webpack/babel", "docker", "nginx", "web sockets", "HTML canvas", "wordpress"]
+	},
+	"work experience": {
+		"software engineer @ beatport (2018+)": [
+			"have grown in my position over the course of a couple of years to lead the frontend team of 3 developers, mentoring and offering code reviews on a daily basis",
+			"have maintained / contributed to our 3 frontend (js) and 1 backend codebases (python), each with very different architectures",
+			"contributed significantly to a large-scale migration from all our legacy systems to newer, cloud-based ones",
+			"contributed to launching a large-scale full-stack cloning of our business to a sister company (beatsource)",
+			"constantly seeking to improve the user experience of our existing products"
+		],
+		"full-stack developer @ agency zero (2017-2018)": [
+			"as the sole tech employee, my role ranged from traditional developer duties to project management",
+			"did a tremendous amount to modernize the stack and workflow of the business (i.e. move from wordpress to react + graphql, from asana to jira, etc) "
+		],
+		"freelance react developer (2016+)": [
+			"I like to make fun sites with/for friends when the right ideas come my way, usually with next.js and graphcms"
+		]
+	},
+	"live projects": {
+		"portfolio": "https://willmeier.cool/",
+		"denvers.art": "https://denvers.art/",
+		"ambiguous.studio": "https://ambiguous.studio/",
+		"beatsource": "https://www.beatsource.com/",
+		"csm kiosks": "https://video.clyffordstillmuseum.org/watch/media-channel/",
+		"valyant ai": "https://valyant.ai/#/",
+		"coupe studios": "https://coupestudios.com/"
+	},
+	"education/awards": [
+		"Galvanize - Full Stack Web Development Immersive (2017)",
+		"Charlotte Street Foundation - UCP Writing Residency (2013)",
+		"KCAI - Painting / Creative Writing double major (2013)",
+		"SAIC - Graphic Design Early College Program (2009)"
+	]
+}

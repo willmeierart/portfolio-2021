@@ -65,6 +65,10 @@ export default function Home () {
 		{
 			name: 'email',
 			externalUrl: 'mailto:willmeierart@gmail.com'
+		},
+		{
+			name: 'resume',
+			externalUrl: 'https://willmeier.cool/static/resume.json'
 		}
 	]
 
